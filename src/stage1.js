@@ -294,7 +294,7 @@ setStages[18] = [[ 3, 3, 3, 3, 3]
         	   , [ 3, 3, 3, 3, 3]
         	   , [ 3, 3, 3, 3, 3] ];
 stageHint[18] = ""
-requiredBlock[18] = 19;
+requiredBlock[18] = 18;
 mission[18] = [20, setM(10, 1)];
 
 //ステージ19
@@ -310,7 +310,7 @@ setStages[19] = [ [ 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0]
         	   , [ 0, 1, 0, 3, 1, 3, 1, 3, 0, 1, 0]
         	   , [ 0, 3, 0, 0, 0, 0, 0, 0, 0, 3, 0] ];
 stageHint[19] = "草"
-requiredBlock[19] = 31;
+requiredBlock[19] = 30;
 mission[19] = [93, setM(10, 3)];
 
 /*
