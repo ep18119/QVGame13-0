@@ -1,0 +1,54 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Main</title>
+  <script src="editor.js"></script>
+</head>
+
+<body>
+  <div id="myapp"></div>
+  <script>
+  // 親ウィンドウを獲得
+  var parentWindow = window.parent;
+
+  //elmコードを獲得
+  var app = Elm.QVGame1.init({
+    node: document.getElementById('myapp')
+  });
+  //elmからメッセージ受信時の処理
+  app.ports.sendMes.subscribe(function(str) {
+    console.log(str)
+    //ファイル保存処理
+	  if (str == "Save"){
+		  var jsonName = window.prompt("出力するファイル名を入力してください","");
+		  if(jsonName != "" && jsonName != null){
+		  	if(window.confirm("'" + jsonName + ".json' をダウンロードします")){
+          //ファイル名(String)をelmに送信
+          app.ports.receiveMes.send(jsonName + ".json");
+			  }else{
+				  alert("ダウンロードをキャンセルしました");
+			  }
+		  }else if(jsonName == ""){
+			  alert("ファイル名が入力されていません");
+		  }else alert("ダウンロードをキャンセルしました");
+	  }
+    //プログラム削除確認
+    else if (str == "Reset"){
+		  if(window.confirm("エディタのブロックを全て削除します")){
+        //True(Bool)をelmに送信
+			  app.ports.receiveMes.send(true);
+		  }
+    }
+    //プログラム送信処理
+    else{
+      //var tab = str[0];
+		  //if(window.confirm("関数" + tab + "から始まるプログラムを送信します。")){
+      if(window.confirm("プログラムを送信します。")){
+        //親ウィンドウに情報を送信する
+	      parentWindow.postMessage(str, '*');
+		  }
+    }
+  });
+  </script>
+</body>
+</html>

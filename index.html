@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<iframe id="simulator" src="./src/simulator.html" style="position: absolute; left: 0%; top: 0%" width = "35%" height = "99%"></iframe>
+<iframe id="editor" src="./QVG_editor/editor.html" style="position: absolute; left: 35%; top: 0%" width = "64%" height = "99%"></iframe>
+
+<script>
+var dummy;
+
+var element1 = document.getElementById( "editor" ) ;
+var iframeWindow1 = element1.contentWindow ;
+var element2 = document.getElementById( "simulator" ) ;
+var iframeWindow2 = element2.contentWindow ;
+
+window.addEventListener("message", receiveMessage, false);
+function receiveMessage(event){
+	console.log(event.data);
+	iframeWindow2.postMessage(event.data, '*');
+}
+
+</script>
+
+</html>
