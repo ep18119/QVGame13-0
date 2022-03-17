@@ -878,7 +878,7 @@ phina.define('MainScene', {
 		case 5: return "「後ろ進めるなら」"
 		case 6: return "「左に進めるなら」"
 		case 7: return "「右に進めるなら」"
-		case 8: return "「動作開始へ動作」"
+		case 8: return "「動作開始へ移動」"
 		case 9: return "「関数nへ移動」"
 		case 10: return "関数"
 		default: return "「なにもしない」"
