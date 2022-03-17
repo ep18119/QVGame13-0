@@ -91,8 +91,9 @@ function sarchBrick( getASTRoots ){
 function sarchAST(command, num) {
 	for (var i=0 ; i < prog.length; i++){
 		//dummy = i;
+		console.log(prog);
 		if(prog[i].ASTne.node.getBrickCommand == command){
-			if(command == "CommandNOP" || command == "CommandFuncStart" && prog[i].node.getBrickArgument == String(num)){
+			if(command == "CommandNOP" || command == "CommandFuncStart" && prog[i].ASTne.node.getBrickArgument.value == String(num)){
 				console.log(prog[i].ASTne);
 				return prog[i].ASTne;
 			}
@@ -355,7 +356,7 @@ phina.define("Player", {
 
 	//抽象構文木のプログラムの処理
 	doCommand: function (type, command, argument) {
-		console.log(command);
+		console.log(command + ", " + type);
 		switch (type){
 			case "EntryBrick" :
 				//EntryBrickは次の処理に遷るだけ
@@ -434,7 +435,9 @@ phina.define("Player", {
 				break;
 			case "TailBrick" :
 				//引数を数値に変換して判定
-				const c = parseInt(argument);
+				const c = parseInt(argument.value);
+				console.log(c);
+				console.log(argument);
 				switch(command) {
 					case "CommandFuncStop" :
 						if(c > 0){
